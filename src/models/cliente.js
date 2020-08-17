@@ -1,30 +1,43 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const ClienteSchema = new mongoose.Schema({
-    
-    name: {
-        type: String,
-        required: true,
-    },
-    email: {
-        type: String,
-    },
-    phone: {
-        type: String,
-    },
-    cpf: {
-        type: String,
-        required: true,
-        unique: true,
-    },
-    address: {
-        type: String,
-    },
-    active: {
-        type: Boolean,
-        default: false,
-    }
-
+	name: {
+		type: String,
+		required: true,
+	},
+	email: {
+		type: String,
+	},
+	phone: {
+		type: String,
+	},
+	cpf: {
+		type: String,
+		required: true,
+		unique: true,
+	},
+	address: {
+		cep: {
+			type: String,
+			require: true,
+		},
+		estado: {
+			type: String,
+			require: true,
+		},
+		cidade: {
+			type: String,
+			require: true,
+		},
+		endereco: {
+			type: String,
+			require: true,
+		},
+	},
+	active: {
+		type: Boolean,
+		default: false,
+	},
 });
 
-mongoose.model('Cliente', ClienteSchema);
+mongoose.model("Cliente", ClienteSchema);
