@@ -4,6 +4,7 @@ const OrcamentoSchema = new mongoose.Schema({
 	cliente: {
 		type: mongoose.Types.ObjectId,
 		required: true,
+		ref: "Cliente",
 	},
 	vendedor: {
 		type: mongoose.Types.ObjectId,

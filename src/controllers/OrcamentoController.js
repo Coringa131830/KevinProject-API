@@ -19,13 +19,13 @@ async function create(req, res) {
 }
 
 async function showPending(req, res) {
-	const orcamentos = await Orcamento.find({ approved: false });
+	const orcamentos = await Orcamento.find({ approved: false }).populate("cliente");
 
 	return res.json({ orcamentos });
 }
 
 async function showApproved(req, res) {
-	const orcamentos = await Orcamento.find({ approved: true });
+	const orcamentos = await Orcamento.find({ approved: true }).populate("cliente");
 
 	return res.json({ orcamentos });
 }
