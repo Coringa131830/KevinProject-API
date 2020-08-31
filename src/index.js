@@ -1,7 +1,9 @@
 const { json } = require('express');
 const app = require('express')();
+const cors = require('cors');
 
 app.use(json());
+app.use(cors());
 
 require('./database');
 
