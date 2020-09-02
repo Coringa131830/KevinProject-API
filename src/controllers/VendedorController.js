@@ -23,7 +23,7 @@ async function login(req, res) {
 
     const token = jwt.sign({ _id }, 'JWT_SECRET!');
 
-    return res.json({ token });
+    return res.json({ token, user });
 
 }
 

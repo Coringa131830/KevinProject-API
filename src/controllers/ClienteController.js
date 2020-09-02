@@ -23,7 +23,7 @@ async function clientePendente(req, res) {
     const clientes = await Cliente.find({ active: false });
 
     return res.json({ clientes });
-
+ 
 }
 
 async function activateCustomer(req, res) {
