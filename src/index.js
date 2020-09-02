@@ -1,7 +1,9 @@
 const { json } = require('express');
 const app = require('express')();
+const cors = require('cors');
 
 app.use(json());
+app.use(cors());
 
 require('./database');
 
@@ -11,4 +13,4 @@ require('./models/vendedor');
 
 app.use(require('./routes'));
 
-app.listen(3001);
+app.listen(process.env.PORT || 3001);

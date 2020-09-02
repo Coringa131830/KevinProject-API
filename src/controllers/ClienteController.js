@@ -5,6 +5,13 @@ const Cliente = mongoose.model('Cliente');
 async function create(req, res) {
 
     const { name, email, phone, cpf, address } = req.body;
+    
+    const clienteEmail = await Cliente.findOne({email});
+    if(clienteEmail) return res.json({err: "Usuário já cadastrado"}).stauts(401);
+    
+    const clienteCPF = await Cliente.findOne({cpf});
+    if(clienteCPF) return res.json({err: "Usuário já cadastrado"}).stauts(401);
+
     const cliente = await Cliente.create({ name, email, phone, cpf, address });
 
     return res.json({ cliente });
@@ -16,7 +23,7 @@ async function clientePendente(req, res) {
     const clientes = await Cliente.find({ active: false });
 
     return res.json({ clientes });
-
+ 
 }
 
 async function activateCustomer(req, res) {
