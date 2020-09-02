@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-const { delete } = require("../routes/orcamento");
 
 const Cliente = mongoose.model("Cliente");
 const Vendedor = mongoose.model("Vendedor");
@@ -62,18 +61,15 @@ async function remove(req, res) {
 	const _orcamento = await Orcamento.findById({ _id });
 
 	if (!_orcamento) return res.json({ err: "Orcamento not found!" });
-	
-	try {
 
+	try {
 		await Orcamento.findOneAndDelete({ _id });
 	} catch (e) {
-		if(e) throw e.message;
-		return res.status(500).json({err: e.message});
+		if (e) throw e.message;
+		return res.status(500).json({ err: e.message });
 	}
 
 	return res.json({});
-
-
 }
 
 module.exports = { create, showPending, approve, showApproved, orcamentoDetails, remove };
