@@ -4,7 +4,10 @@ const Cliente = mongoose.model('Cliente');
 
 async function create(req, res) {
 
-    const { name, email, phone, cpf, address } = req.body;
+    const { userId, body } = req;
+
+    const { name, email, phone, cpf, address } = body;
+    const { _id } = userId;
     
     const clienteEmail = await Cliente.findOne({email});
     if(clienteEmail) return res.json({err: "Usuário já cadastrado"}).stauts(401);
@@ -12,7 +15,7 @@ async function create(req, res) {
     const clienteCPF = await Cliente.findOne({cpf});
     if(clienteCPF) return res.json({err: "Usuário já cadastrado"}).stauts(401);
 
-    const cliente = await Cliente.create({ name, email, phone, cpf, address });
+    const cliente = await Cliente.create({ name, vendedor: _id ,email, phone, cpf, address });
 
     return res.json({ cliente });
     

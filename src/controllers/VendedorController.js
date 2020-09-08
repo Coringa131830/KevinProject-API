@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const jwt = require('jsonwebtoken');
 
 const Vendedor = mongoose.model('Vendedor');
+const Cliente  = mongoose.model('Cliente');
 
 async function create(req, res) {
     const { name, email, password, phone, cpf, address } = req.body;
@@ -30,9 +31,11 @@ async function login(req, res) {
 
 async function listCliente( req, res ) {
 
-    const { userId } = req;
+    const { _id } = req.userId;
 
-    return res.status(200).json({ userId });
+    const clientes = await Cliente.find({ vendedor: _id }).populate('vendedor');
+
+    return res.status(200).json({ clientes });
 
 }
 
