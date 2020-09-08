@@ -27,4 +27,13 @@ async function login(req, res) {
 
 }
 
-module.exports = { create, login };
+
+async function listCliente( req, res ) {
+
+    const { userId } = req;
+
+    return res.status(200).json({ userId });
+
+}
+
+module.exports = { create, login, listCliente };
