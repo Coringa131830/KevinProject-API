@@ -9,7 +9,8 @@ async function listAll( req, res ){
     const response = await axios.get('http://api.sigecloud.com.br/request/Produtos/GetAll', {
         headers: headers,
     });
-    return res.json(response)
+
+    return res.json({produtos: response.data})
 
 }
 
