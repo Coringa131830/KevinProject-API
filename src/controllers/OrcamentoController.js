@@ -11,9 +11,7 @@ async function create(req, res) {
 	const _cliente = await Cliente.findOne({ cpf: cliente });
 	if (!_cliente.active) return res.json({ err: "This customer isn't active" });
 
-	const itensListParsed = itens.split(";");
-
-	const orcamento = await Orcamento.create({ cliente: _cliente, vendedor: userId, itens: itensListParsed, valor });
+	const orcamento = await Orcamento.create({ cliente: _cliente, vendedor: userId, itens: itens, valor });
 
 	return res.json({ orcamento });
 }
