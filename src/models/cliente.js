@@ -5,6 +5,10 @@ const ClienteSchema = new mongoose.Schema({
 		type: String,
 		required: true,
 	},
+	vendedor: {
+		type: mongoose.Types.ObjectId,
+		ref: 'Vendedor',
+	},
 	email: {
 		type: String,
 	},
