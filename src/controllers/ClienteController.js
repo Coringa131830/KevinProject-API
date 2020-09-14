@@ -44,4 +44,14 @@ async function activateCustomer(req, res) {
 
 }
 
-module.exports = { create, clientePendente, activateCustomer };
+async function remove(req, res) {
+
+    const { _id } = req.params;
+    
+    await Cliente.findByIdAndDelete({ _id });
+
+    return res.status(200).send();
+
+}
+
+module.exports = { create, clientePendente, activateCustomer, remove };
