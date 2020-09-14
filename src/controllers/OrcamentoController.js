@@ -70,4 +70,12 @@ async function remove(req, res) {
 	return res.json({});
 }
 
-module.exports = { create, showPending, approve, showApproved, orcamentoDetails, remove };
+async function showByVendedor( req, res ) {
+	const { _id } = req.params;
+	const orcamentos = await Orcamento.find({ vendedor: _id });
+
+	return res.json({ orcamentos }).status(200);
+
+}
+
+module.exports = { create, showPending, approve, showApproved, orcamentoDetails, remove, showByVendedor };

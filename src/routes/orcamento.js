@@ -10,5 +10,7 @@ router.post('/:_id', OrcamentoController.approve);
 router.get('/more/:_id', OrcamentoController.orcamentoDetails);
 router.get('/approved', OrcamentoController.showApproved);
 router.delete('/reprove/:_id', OrcamentoController.remove);
+router.get('/:_id', OrcamentoController.showByVendedor);
 
 module.exports = router;
+
