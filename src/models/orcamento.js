@@ -15,7 +15,14 @@ const OrcamentoSchema = new mongoose.Schema({
 		default: Date.now(),
 	},
 	itens: {
-		type: [String],
+		type: [
+			{
+				name: String,
+				valorItem: Number,
+				qtdItem: Number,
+				subTotal: Number,
+			}
+		],
 	},
 	valor: {
 		type: Number,
