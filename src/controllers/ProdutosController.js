@@ -27,7 +27,13 @@ async function search( req, res ){
         headers: headers,
     });
 
-    return res.json({produtos: response.data})
+    const produtos = response.data;
+
+    produtos.forEach((val, idx, arr) => {                                               
+        arr[idx] = { value: val.Nome, label: val.Nome };                      
+    }, produtos);
+
+    return res.json({produtos})
 
 }
 
