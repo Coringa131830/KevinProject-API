@@ -29,7 +29,7 @@ async function showPending(req, res) {
 
 	}
 
-	const orcamentos = await Orcamento.find({ approved: false, vendedor: userId }).populate("cliente");
+	const orcamentos = await Orcamento.find({ approved: false, vendedor: userId }).populate("cliente").populate("vendedor");
 	return res.json({ orcamentos });
 
 
@@ -48,7 +48,7 @@ async function showApproved(req, res) {
 
 	}
 
-	const orcamentos = await Orcamento.find({ approved: true, vendedor: userId }).populate("cliente");
+	const orcamentos = await Orcamento.find({ approved: true, vendedor: userId }).populate("vliente").populate("vendedor");
 	return res.json({ orcamentos });
 }
 
