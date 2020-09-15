@@ -105,8 +105,22 @@ async function showByVendedor( req, res ) {
 
 
 async function faturarPedido( req, res ) {
+	
+	
+	try {
+
+		const { _id } = req.params;
+		await Orcamento.findByIdAndUpdate({ _id }, { faturado: true });
+		return res.status(200).send();
+
+	} catch ( e ) {
+
+		return res.status(500).json({ err: e.message });
+	
+	}
 
 }
+
 
 
 async function getFaturados ( req, res ) {
@@ -126,4 +140,5 @@ module.exports = { create,
 	remove, 
 	showByVendedor,
 	getFaturados,
+	faturarPedido,
 };
