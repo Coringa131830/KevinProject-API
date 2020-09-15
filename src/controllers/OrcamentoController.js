@@ -24,7 +24,7 @@ async function showPending(req, res) {
 
 	if(user.isAdmin) {
 
-		const orcamentos = await Orcamento.find({ approved: false }).populate("cliente");
+		const orcamentos = await Orcamento.find({ approved: false }).populate("cliente").populate("vendedor");
 		return res.json({ orcamentos });
 
 	}
