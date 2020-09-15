@@ -11,7 +11,7 @@ router.get('/more/:_id', OrcamentoController.orcamentoDetails);
 router.get('/approved', auth, OrcamentoController.showApproved);
 router.delete('/reprove/:_id', OrcamentoController.remove);
 router.get('/vendedor/:_id', OrcamentoController.showByVendedor);
-router.get('/faturados', OrcamentoController.getFaturados);
+router.get('/faturados', auth, OrcamentoController.getFaturados);
 router.put('/faturar/:_id', OrcamentoController.setFaturado);
 
 module.exports = router;

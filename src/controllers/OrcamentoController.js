@@ -107,8 +107,21 @@ async function showByVendedor( req, res ) {
 
 
 async function getFaturados( req, res ) {
-	const faturados = await Orcamento.find({ faturado: true }).populate("cliente").populate("vendedor");
+	
+	const { userId } = req;
+
+	const user = await Vendedor.findOne({ userId }); 
+	
+	if(user.isAdmin) {
+	
+		const faturados = await Orcamento.find({ faturado: true }).populate("cliente").populate("vendedor");
+		return res.json({faturados}).status(200);
+
+	}
+
+	const faturados = await Orcamento.find({ faturado: true, vendedor: user.id }).populate("cliente").populate("vendedor");
 	return res.json({faturados}).status(200);
+
 }
 
 async function setFaturado( req, res ) {
