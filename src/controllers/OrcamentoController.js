@@ -60,7 +60,9 @@ async function approve(req, res) {
 
 	if (!_orcamento) return res.json({ err: "Orcamento not found!" });
 
-	const nOrcamento = await Orcamento.findOneAndUpdate({ _id }, { approved: true });
+	const nOrcamento = await Orcamento.findOne({ _id });
+	nOrcamento.approved = true;
+	nOrcamento.save()
 
 	return res.json(nOrcamento);
 }
@@ -104,33 +106,6 @@ async function showByVendedor( req, res ) {
 }
 
 
-async function faturarPedido( req, res ) {
-	
-	
-	try {
-
-		const { _id } = req.params;
-		const orcamento = Orcamento.findOne({ _id });
-		return res.json({ orcamento }).send();
-
-	} catch ( e ) {
-
-		return res.status(500).json({ err: e.message });
-	
-	}
-
-}
-
-
-
-async function getFaturados ( req, res ) {
-
-	const pedidos = await Orcamento.find({  });
-
-	return res.json({ pedidos }).status(200);
-	
-
-}
 
 module.exports = { create, 
 	showPending, 
@@ -139,6 +114,4 @@ module.exports = { create,
 	orcamentoDetails, 
 	remove, 
 	showByVendedor,
-	getFaturados,
-	faturarPedido,
 };

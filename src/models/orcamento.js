@@ -9,6 +9,7 @@ const OrcamentoSchema = new mongoose.Schema({
 	vendedor: {
 		type: mongoose.Types.ObjectId,
 		required: true,
+		ref: 'Vendedor',
 	},
 	createdAt: {
 		type: Date,
