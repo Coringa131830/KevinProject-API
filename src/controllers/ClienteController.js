@@ -56,7 +56,7 @@ async function remove(req, res) {
 
 async function getAllClientes(req, res) {
 
-    const clientes = await Cliente.find({});
+    const clientes = await Cliente.find({}).populate("vendedor");
 
     return res.json({clientes}).status(200);
 
