@@ -31,6 +31,10 @@ const OrcamentoSchema = new mongoose.Schema({
 		type: Boolean,
 		default: false,
 	},
+	faturado: {
+		type: Boolean,
+		default: false,
+	},
 });
 
 mongoose.model("Orcamento", OrcamentoSchema);

@@ -103,6 +103,21 @@ async function showByVendedor( req, res ) {
 
 }
 
+
+async function faturarPedido( req, res ) {
+
+}
+
+
+async function getFaturados ( req, res ) {
+
+	const pedidos = await Orcamento.find({ faturado: true });
+
+	return res.json({ pedidos }).status(200);
+	
+
+}
+
 module.exports = { create, 
 	showPending, 
 	approve, 
@@ -110,4 +125,5 @@ module.exports = { create,
 	orcamentoDetails, 
 	remove, 
 	showByVendedor,
+	getFaturados,
 };
