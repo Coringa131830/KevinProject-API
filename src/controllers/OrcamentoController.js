@@ -20,7 +20,7 @@ async function showPending(req, res) {
 
 	const { userId } = req;
 
-	const user = await Vendedor.findOne({ _id: user });
+	const user = await Vendedor.findOne({ _id: userId });
 
 	if(user.isAdmin) {
 
@@ -39,7 +39,7 @@ async function showApproved(req, res) {
 
 	const { userId } = req;
 
-	const user = await Vendedor.findOne({ _id: user });
+	const user = await Vendedor.findOne({ _id: userId });
 
 	if(user.isAdmin) {
 
@@ -53,6 +53,7 @@ async function showApproved(req, res) {
 }
 
 async function approve(req, res) {
+
 	const { _id } = req.params;
 
 	const _orcamento = await Orcamento.findById({ _id });
