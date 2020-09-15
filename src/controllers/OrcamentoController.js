@@ -125,7 +125,7 @@ async function faturarPedido( req, res ) {
 
 async function getFaturados ( req, res ) {
 
-	const pedidos = await Orcamento.find({ faturado: true });
+	const pedidos = await Orcamento.find({  });
 
 	return res.json({ pedidos }).status(200);
 	
