@@ -17,14 +17,38 @@ async function create(req, res) {
 }
 
 async function showPending(req, res) {
-	const orcamentos = await Orcamento.find({ approved: false }).populate("cliente");
 
+	const { userId } = req;
+
+	const user = await Vendedor.findOne({ _id: user });
+
+	if(user.isAdmin) {
+
+		const orcamentos = await Orcamento.find({ approved: false }).populate("cliente");
+		return res.json({ orcamentos });
+
+	}
+
+	const orcamentos = await Orcamento.find({ approved: false, vendedor: userId }).populate("cliente");
 	return res.json({ orcamentos });
+
+
 }
 
 async function showApproved(req, res) {
-	const orcamentos = await Orcamento.find({ approved: true }).populate("cliente");
 
+	const { userId } = req;
+
+	const user = await Vendedor.findOne({ _id: user });
+
+	if(user.isAdmin) {
+
+		const orcamentos = await Orcamento.find({ approved: true }).populate("cliente");
+		return res.json({ orcamentos });
+
+	}
+
+	const orcamentos = await Orcamento.find({ approved: true, vendedor: userId }).populate("cliente");
 	return res.json({ orcamentos });
 }
 
@@ -78,4 +102,11 @@ async function showByVendedor( req, res ) {
 
 }
 
-module.exports = { create, showPending, approve, showApproved, orcamentoDetails, remove, showByVendedor };
+module.exports = { create, 
+	showPending, 
+	approve, 
+	showApproved, 
+	orcamentoDetails, 
+	remove, 
+	showByVendedor,
+};
