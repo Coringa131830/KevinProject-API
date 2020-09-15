@@ -54,4 +54,12 @@ async function remove(req, res) {
 
 }
 
-module.exports = { create, clientePendente, activateCustomer, remove };
+async function getAllClientes(req, res) {
+
+    const clientes = await Cliente.find({});
+
+    return res.json({clientes}).status(200);
+
+}
+
+module.exports = { create, clientePendente, activateCustomer, remove, getAllClientes };
