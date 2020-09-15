@@ -107,7 +107,7 @@ async function showByVendedor( req, res ) {
 
 
 async function getFaturados( req, res ) {
-	const faturados = await Orcamento.find({ faturado: true });
+	const faturados = await Orcamento.find({ faturado: true }).populate("cliente").populate("vendedor");
 	return res.json({faturados}).status(200);
 }
 
