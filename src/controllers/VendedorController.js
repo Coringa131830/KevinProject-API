@@ -55,7 +55,7 @@ async function deleteVendedor( req, res ) {
 
     await Vendedor.findOneAndDelete({ _id });
 
-    return res.status(200);
+    return res.status(200).send();
     
 }
 
