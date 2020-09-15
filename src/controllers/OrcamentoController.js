@@ -43,7 +43,7 @@ async function showApproved(req, res) {
 
 	if(user.isAdmin) {
 
-		const orcamentos = await Orcamento.find({ approved: true }).populate("cliente");
+		const orcamentos = await Orcamento.find({ approved: true }).populate("cliente").populate("vendedor");
 		return res.json({ orcamentos });
 
 	}
