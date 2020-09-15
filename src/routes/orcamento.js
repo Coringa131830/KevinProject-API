@@ -6,12 +6,12 @@ const OrcamentoController = require('../controllers/OrcamentoController');
 
 router.post('/create', auth, OrcamentoController.create);
 router.get('/pending', auth, OrcamentoController.showPending);
-router.post('/:_id', OrcamentoController.approve);
+router.post('/approve/:_id', OrcamentoController.approve);
 router.get('/more/:_id', OrcamentoController.orcamentoDetails);
 router.get('/approved', auth, OrcamentoController.showApproved);
 router.delete('/reprove/:_id', OrcamentoController.remove);
-router.get('/:_id', OrcamentoController.showByVendedor);
+router.get('/vendedor/:_id', OrcamentoController.showByVendedor);
+router.get('/faturados', OrcamentoController.getFaturados);
+router.put('/faturar/:_id', OrcamentoController.setFaturado);
 
-router.post('/faturados', (req, res) => res.json({msg: "Ok!"}).status(200));
 module.exports = router;
-
