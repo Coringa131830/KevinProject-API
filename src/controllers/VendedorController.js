@@ -39,4 +39,24 @@ async function listCliente( req, res ) {
 
 }
 
-module.exports = { create, login, listCliente };
+
+async function getAllVendedores( req, res ) {
+
+    const vendedores = await Vendedor.find({});
+
+    return res.status(200).json({ vendedores });
+
+}
+
+
+async function deleteVendedor( req, res ) {
+
+    const { _id } = req.params;
+
+    await Vendedor.findOneAndDelete({ _id });
+
+    return res.status(200);
+    
+}
+
+module.exports = { create, login, listCliente, getAllVendedores, deleteVendedor };
