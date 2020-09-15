@@ -110,8 +110,8 @@ async function faturarPedido( req, res ) {
 	try {
 
 		const { _id } = req.params;
-		await Orcamento.findByIdAndUpdate({ _id }, { faturado: true });
-		return res.status(200).send();
+		const orcamento = Orcamento.findOne({ _id });
+		return res.json({ orcamento }).send();
 
 	} catch ( e ) {
 
