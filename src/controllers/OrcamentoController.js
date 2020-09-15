@@ -99,7 +99,7 @@ async function remove(req, res) {
 
 async function showByVendedor( req, res ) {
 	const { _id } = req.params;
-	const orcamentos = await Orcamento.find({ vendedor: _id });
+	const orcamentos = await Orcamento.find({ vendedor: _id }).populate('Vendedor');
 
 	return res.json({ orcamentos }).status(200);
 
