@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb+srv://admin:admin@cluster0.p46k4.mongodb.net/Cluster0?retryWrites=true&w=majority', {
+mongoose.connect('geonosis.mongodb.umbler.com:46189', {
+    user: 'mkdist33',
+    pass: 'kevin123432',
     useNewUrlParser: true,
     useUnifiedTopology: true,
 });
