@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 
-mongoose.connect('geonosis.mongodb.umbler.com:46189', {
-    user: 'mkdist33',
-    pass: 'kevin123432',
+mongoose.connect('geonosis.mongodb.umbler.com:37768', {
+    user: 'admdb',
+    pass: 'admin1234321',
     useNewUrlParser: true,
     useUnifiedTopology: true,
 });
