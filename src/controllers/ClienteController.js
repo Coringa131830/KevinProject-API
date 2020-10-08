@@ -62,4 +62,11 @@ async function getAllClientes(req, res) {
 
 }
 
-module.exports = { create, clientePendente, activateCustomer, remove, getAllClientes };
+async function getLastPurchase(req, res) {
+    const {_id} = req.body
+    const purchases = await Cliente.find({ vendedor: ObjectId(_id) }).limit(3)
+
+    return res.json({purchases }).status(200);
+}
+
+module.exports = { create, getLastPurchase, clientePendente, activateCustomer, remove, getAllClientes };
