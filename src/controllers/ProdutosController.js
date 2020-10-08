@@ -64,7 +64,7 @@ async function search(req, res) {
         price: response.data.PrecoVenda,
       }
     ];
-    return res.json(produtos);
+    return res.json({produtos});
   }
 }
 
