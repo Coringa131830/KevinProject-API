@@ -37,7 +37,14 @@ async function search(req, res) {
     );
     produtos = response.data;
     produtos.forEach((val, idx, arr) => {
-      arr[idx] = { value: val.Nome, label: val.Nome, price: val.PrecoVenda };
+      arr[idx] = {
+        value: val.Nome,
+        label: val.Nome,
+        marca: val.Marca,
+        codigo: val.Codigo,
+        categoria: val.Categoria,
+        price: val.PrecoVenda,
+      };
     }, produtos);
 
     return res.json({ produtos });
@@ -48,8 +55,16 @@ async function search(req, res) {
         headers: headers,
       }
     );
-    produtos = response.data;
-    return res.json({ produtos });
+    produtos = [{
+        value: response.data.Nome,
+        label: response.data.Nome,
+        marca: response.data.Marca,
+        codigo: response.data.Codigo,
+        categoria: response.data.Categoria,
+        price: response.data.PrecoVenda,
+      }
+    ];
+    return res.json(produtos);
   }
 }
 
