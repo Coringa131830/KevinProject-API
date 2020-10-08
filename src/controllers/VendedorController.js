@@ -5,8 +5,8 @@ const Vendedor = mongoose.model('Vendedor');
 const Cliente  = mongoose.model('Cliente');
 
 async function create(req, res) {
-    const { name, email, password, phone, cpf, address } = req.body;
-    const vendedor = await Vendedor.create({ name, email, password, phone, cpf, address });
+    const { name, email, password, phone, cpf, address, isAdmin } = req.body;
+    const vendedor = await Vendedor.create({ name, email, password, phone, cpf, address, isAdmin });
 
     return res.json({ vendedor });
 }
