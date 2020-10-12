@@ -130,9 +130,15 @@ async function setFaturado( req, res ) {
 	return res.status(200).send();
 }
  
+async function getLastPurchase(req, res) {
+    const {_id} = req.params
+    const purchases = await Orcamento.find({cliente: _id}).sort('-createdAt').limit(3)
+    return res.json({purchases }).status(200);
+}
 
 module.exports = { create, 
 	showPending, 
+	getLastPurchase,
 	approve, 
 	showApproved, 
 	orcamentoDetails, 
